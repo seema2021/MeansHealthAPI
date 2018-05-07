@@ -1,0 +1,85 @@
+
+
+@extends('app')
+@section('content')
+
+<div class="wrapper">
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="header-icon">
+                <i class="fa fa-users"></i>
+            </div>
+            <div class="header-title">
+                <h1>Blog</h1>
+                <small>Blog List</small>
+            </div>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="btn-group">
+                                <a href="#">
+                                    <h4 style="color:#009688">List Blogs</h4>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
+                            <div class="btn-group">
+
+                            </div>
+                            <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
+                            <div class="table-responsive">
+                                <table id="dataTableExample1" class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                        <tr class="info">
+                                            <th>Image</th>
+                                            <th>Name</th>
+                                            <th>Header</th>
+                                            <th>Title</th>
+                                            <th>View</th>
+                                            <th>Date</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    @foreach($blogs as $blog)
+                                    <tbody>
+                                        <tr>
+                                            <td><img src="http://strikerinfotech.com/Thauphali/public/{{$blog['image']}}" class="img-circle" alt="User Image" width="50" height="50"> </td>
+                                            <td>{{$blog['name']}}</td>
+                                            <td>{{$blog['header']}}</td>
+                                            <td>{!! \Illuminate\Support\Str::words($blog->title, 5,'....')  !!}</td>
+                                            <td>{{$blog['view']}}</td>
+                                            <td>{{$blog['date']}}</td>
+                                            <td style="width: 124px !important;">
+                                                <a href="{{route('backend.blogs.show',$blog->id)}}" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
+                                                <a href="{{route('backend.blogs.edit',$blog->id)}}" class="btn btn-add btn-sm"><i class="fa fa-pencil"></i></a>
+                                                <form method="POST" action="{{route('backend.blogs.destroy',$blog->id)}}">
+                                                    <input type="hidden" name="_method" value="DELETE"/>
+                                                    <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                                                    <button type="submit" onclick="return confirm('Are you sure Delete This Advice?')" style="margin-left: 76px; margin-top: -24px;" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                                                </form>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    @endforeach                              
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+   
+</div>
+
+
+@stop

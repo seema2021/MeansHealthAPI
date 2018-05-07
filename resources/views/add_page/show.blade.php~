@@ -1,0 +1,64 @@
+@extends('app')
+@section('content')
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="header-icon">
+            <i class="fa fa-users"></i>
+        </div>
+        <div class="header-title">
+            <h1>Show Blog</h1>
+            <small>Blog list</small>
+        </div>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-bd lobidrag">                       
+                    <div class="panel-body">
+                        <div class="col-sm-12">
+                            <div class="panel lobidisable panel-bd">
+                                <div class="panel-heading">
+                                    <div class="panel-title">
+                                        <h4>Show Blogs</h4>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="table-responsive">     
+                                        <table id="myTable" class="table  table-bordered dt-responsive   table-striped jambo_table bulk_action"> 
+                                            <tr>         
+                                                <th style="width: 30%;">Name:</th>    
+                                                <td>{{$blog->name}}</td>  
+                                            </tr>       
+                                            <tr>       
+                                                <th style="width: 30%;">Header:</th>    
+                                                <td>{{$blog->header}}</td>     
+                                            </tr>      
+
+                                            <tr>         
+                                                <th style="width: 30%;">Image:</th>  
+                                                <td><img src="/{{$blog->image}}" style="height: 100px;border-radius: 50%;  width: 100px;"/></td>      
+                                            </tr>  
+                                            <tr>  
+                                                <th style="width: 30%;">View:</th>    
+                                                <td>{{$blog->view}}</td> 
+                                            </tr>   
+                                            <tr>  
+                                                <th style="width: 30%;">Date:</th>    
+                                                <td>{{$blog->date}}</td> 
+                                            </tr>
+                                            <tr>         
+                                                <th style="width: 30%;">Title:</th>      
+                                                <td>{{$blog->title}}</td>   
+                                            </tr> 
+                                        </table> 
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    </section>
+</div>
+@stop
